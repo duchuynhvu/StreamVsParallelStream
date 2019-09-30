@@ -21,42 +21,54 @@ public class StreamDemo {
         // ## FILTER
         startNanoTime = System.nanoTime();
         startMillisTime = System.currentTimeMillis();
-        System.out.println("Stream: Filter Count?= "
-                + eList.stream().filter(e -> e.getSalary() > 15000).count());
+        System.out.print("Stream: Filter Order?\n");
+        eList.stream().filter(e -> e.getSalary() > 15000)
+                .forEach(e -> System.out.print(e.getName() + " "));
+        
+        System.out.println("\n");
 
         endNanoTime = System.nanoTime();
         endMillisTime = System.currentTimeMillis();
-        System.out.println("Stream: Filter Time Taken? " 
+        System.out.println("Elapsed time? " 
                 + (endNanoTime - startNanoTime) + "(ns), "
                 + (endMillisTime - startMillisTime) +"(ms)\n");
 
+        System.out.println("\n------------------------");
+        
         // ## UNORDERED FILTER
         startNanoTime = System.nanoTime();
         startMillisTime = System.currentTimeMillis();
-        System.out.println("Stream: Unordered Filter Count?= "
-                + eList.stream()
-                    .unordered().filter(e -> e.getSalary() > 15000).count());
+        System.out.print("Stream: Unordered Filter Order?\n");
+        eList.stream().unordered().filter(e -> e.getSalary() > 15000)
+                .forEach(e -> System.out.print(e.getName() + " "));
+                    
+        System.out.println("\n");
 
         endNanoTime = System.nanoTime();
         endMillisTime = System.currentTimeMillis();
-        System.out.println("Stream: Unordered Filter Time Taken? " 
+        System.out.println("Elapsed time? " 
                 + (endNanoTime - startNanoTime) + "(ns), "
                 + (endMillisTime - startMillisTime) +"(ms)\n");
-                
+        
+        System.out.println("\n------------------------");
+        
         // ## SEQUENTIAL FILTER
         startNanoTime = System.nanoTime();
         startMillisTime = System.currentTimeMillis();
-        System.out.println("Stream: Sequential Filter Count?= "
-                + eList.stream()
-                    .sequential().filter(e -> e.getSalary() > 15000).count());
+        System.out.print("Stream: Sequential Filter Order?\n");
+        eList.stream().sequential().filter(e -> e.getSalary() > 15000)
+                .forEach(e -> System.out.print(e.getName() + " "));
+                    
+        System.out.println("\n");
 
         endNanoTime = System.nanoTime();
         endMillisTime = System.currentTimeMillis();
-        System.out.println("Stream: Sequential Filter Time Taken? " 
+        System.out.println("Elapsed time? " 
                 + (endNanoTime - startNanoTime) + "(ns), "
                 + (endMillisTime - startMillisTime) +"(ms)\n");
         
         
+        System.out.println("\n=========================");
         /*****
          * Here We Are Creating A 'Parallel Stream' & Displaying The Result
          *****/
@@ -64,81 +76,114 @@ public class StreamDemo {
         // ## FILTER
         startNanoTime = System.nanoTime();
         startMillisTime = System.currentTimeMillis();
-        System.out.println("ParallelStream: Filter Count?= " 
-                + eList.parallelStream()
-                    .filter(e -> e.getSalary() > 15000).count());
+        System.out.print("ParallelStream: Filter Order?\n"); 
+        eList.parallelStream().filter(e -> e.getSalary() > 15000)
+                .forEach(e -> System.out.print(e.getName() + " "));
+        
+        System.out.println("\n");
 
         endNanoTime = System.nanoTime();
         endMillisTime = System.currentTimeMillis();
-        System.out.println("ParallelStream: Filter Time Taken? " 
+        System.out.println("Elapsed time? " 
                 + (endNanoTime - startNanoTime) + "(ns), "
                 + (endMillisTime - startMillisTime) +"(ms)\n");
 
+        System.out.println("\n------------------------");
+        
      // ## UNORDERED FILTER
         startNanoTime = System.nanoTime();
         startMillisTime = System.currentTimeMillis();
-        System.out.println("ParallelStream: Unordered Filter Count?= "
-                + eList.parallelStream()
-                    .unordered().filter(e -> e.getSalary() > 15000).count());
+        System.out.print("ParallelStream: Unordered Filter Order?\n");
+        eList.parallelStream().unordered().filter(e -> e.getSalary() > 15000)
+                .forEach(e -> System.out.print(e.getName() + " "));
 
+        System.out.println("\n");
+        
         endNanoTime = System.nanoTime();
         endMillisTime = System.currentTimeMillis();
-        System.out.println("ParallelStream: Unordered Filter Time Taken? " 
+        System.out.println("Elapsed time? " 
                 + (endNanoTime - startNanoTime) + "(ns), "
                 + (endMillisTime - startMillisTime) +"(ms)\n");
                 
+        System.out.println("\n------------------------");
+        
         // ## SEQUENTIAL FILTER
         startNanoTime = System.nanoTime();
         startMillisTime = System.currentTimeMillis();
-        System.out.println("ParallelStream: Sequential Filter Count?= "
-                + eList.parallelStream()
-                    .sequential().filter(e -> e.getSalary() > 15000).count());
+        System.out.print("ParallelStream: Sequential Filter Order?\n");
+        eList.parallelStream().sequential().filter(e -> e.getSalary() > 15000)
+                .forEach(e -> System.out.print(e.getName() + " "));
 
+        System.out.println("\n");
+        
         endNanoTime = System.nanoTime();
         endMillisTime = System.currentTimeMillis();
-        System.out.println("ParallelStream: Sequential Filter Time Taken? " 
+        System.out.println("Elapsed time? " 
                 + (endNanoTime - startNanoTime) + "(ns), "
                 + (endMillisTime - startMillisTime) +"(ms)\n");
     }
     
     public static List<Employee> getEmpList() {
         return Arrays.asList(
-                new Employee("A", 20000),
-                new Employee("B", 3000),
-                new Employee("C", 15002),
-                new Employee("D", 7856),
-                new Employee("E", 200),
-                new Employee("F", 50000),
-                new Employee("G", 20000),
-                new Employee("K", 3000),
-                new Employee("L", 15002),
-                new Employee("H", 7856),
-                new Employee("M", 200),
-                new Employee("N", 50000),
-                new Employee("AA", 20000),
-                new Employee("BB", 3000),
-                new Employee("CC", 15002),
-                new Employee("DD", 7856),
-                new Employee("EE", 200),
-                new Employee("FF", 50000),
-                new Employee("GG", 20000),
-                new Employee("KK", 3000),
-                new Employee("LL", 15002),
-                new Employee("HH", 7856),
-                new Employee("MM", 200),
-                new Employee("NN", 50000),
-                new Employee("AAA", 20000),
-                new Employee("BBB", 3000),
-                new Employee("CCC", 15002),
-                new Employee("DDD", 7856),
-                new Employee("EEE", 200),
-                new Employee("FFF", 50000),
-                new Employee("GGG", 20000),
-                new Employee("KKK", 3000),
-                new Employee("LLL", 15002),
-                new Employee("HHH", 7856),
-                new Employee("MMM", 200),
-                new Employee("NNN", 50000));
+                new Employee("1", 20000),
+                new Employee("2", 3000),
+                new Employee("3", 15002),
+                new Employee("4", 7856),
+                new Employee("5", 200),
+                new Employee("6", 50000),
+                new Employee("7", 20000),
+                new Employee("8", 3000),
+                new Employee("9", 15002),
+                new Employee("10", 7856),
+                new Employee("11", 200),
+                new Employee("12", 50000),
+                new Employee("13", 20000),
+                new Employee("14", 3000),
+                new Employee("15", 15002),
+                new Employee("16", 7856),
+                new Employee("17", 200),
+                new Employee("18", 50000),
+                new Employee("19", 20000),
+                new Employee("20", 3000),
+                new Employee("21", 15002),
+                new Employee("22", 7856),
+                new Employee("23", 200),
+                new Employee("24", 50000),
+                new Employee("25", 20000),
+                new Employee("26", 3000),
+                new Employee("27", 15002),
+                new Employee("28", 7856),
+                new Employee("29", 200),
+                new Employee("30", 50000),
+                new Employee("31", 20000),
+                new Employee("32", 3000),
+                new Employee("33", 15002),
+                new Employee("34", 7856),
+                new Employee("35", 200),
+                new Employee("36", 200),
+                new Employee("37", 200),
+                new Employee("38", 200),
+                new Employee("39", 200),
+                new Employee("40", 50000),
+                new Employee("41", 20000),
+                new Employee("42", 3000),
+                new Employee("43", 15002),
+                new Employee("44", 7856),
+                new Employee("45", 200),
+                new Employee("46", 50000),
+                new Employee("47", 20000),
+                new Employee("48", 3000),
+                new Employee("49", 15002),
+                new Employee("50", 200),
+                new Employee("51", 20000),
+                new Employee("52", 3000),
+                new Employee("53", 15002),
+                new Employee("54", 7856),
+                new Employee("55", 200),
+                new Employee("56", 50000),
+                new Employee("57", 20000),
+                new Employee("58", 3000),
+                new Employee("59", 15002));
 
     }
 }
